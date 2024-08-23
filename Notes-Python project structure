@@ -1,0 +1,82 @@
+Refer Jenkinsfile for more clarity:
+
+Packages to install:
+sudo yum install -y python3
+python3 --version
+
+sudo yum install -y python3-pip
+pip3 --version
+
+pip3 install pytest
+pytest --version
+
+pip3 install wheel setuptools
+pip3 list
+
+
+Python Project Structure:
+
+project_name/
+├── src/                                  ---> Contains source code
+│   ├── project_name/              
+│   │   ├── __init__.py
+│   │   ├── module1.py
+│   │   └── module2.py
+│   └── main.py
+├── tests/                                ---> Contains test file
+│   ├── __init__.py
+│   └── test_module1.py
+├── .gitignore
+├── requirements.txt
+├── setup.py
+├── README.md
+├── LICENSE
+└── .env
+
+
+
+src/: Contains the source code for your project.
+
+project_name/: A subdirectory (typically named after the project) containing the main code modules. This is where you place your Python packages and modules.
+__init__.py: An initialization file that allows the directory to be recognized as a Python package.
+module1.py, module2.py: Example Python modules containing your code.
+main.py: A script to run your application or entry point.
+tests/: Contains unit tests or integration tests.
+
+__init__.py: An initialization file to treat the directory as a package.
+test_module1.py: Test modules with functions or classes to test your code.
+.gitignore: Specifies files and directories to be ignored by Git. Common entries include __pycache__/, .env, and *.pyc.
+
+requirements.txt: Lists the dependencies required for the project. 
+
+Example content:
+requests==2.25.1
+numpy==1.21.2
+
+You can generate this file using pip freeze > requirements.txt.
+
+setup.py: A script for packaging and installing the project. 
+
+Example content:
+from setuptools import setup, find_packages
+
+setup(
+    name='project_name',
+    version='0.1.0',
+    packages=find_packages(where='src'),
+    package_dir={'': 'src'},
+    install_requires=[
+        'requests',
+        'numpy',
+    ],
+    tests_require=[
+        'pytest',
+    ],
+    entry_points={
+        'console_scripts': [
+            'project_name=project_name.main:main',
+        ],
+    },
+)
+
+
