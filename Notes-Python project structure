@@ -80,3 +80,11 @@ setup(
 )
 
 
+
+README.md: A Markdown file containing a description of the project, installation instructions, usage examples, etc.
+
+LICENSE: A file containing the license under which the project is distributed.
+
+.env: (Optional) A file for environment variables, typically used with tools like python-dotenv to manage environment-specific settings.
+
+
