@@ -43,7 +43,8 @@ pipeline {
             steps {
                 // Run the tests using pytest or another testing framework
                 sh '''
-                PYTHONPATH=./project_name pytest tests/test_ops.py
+                mkdir -p reports
+                PYTHONPATH=./project_name pytest --junitxml=reports/results.xml tests/test_ops.py
                 '''
             }
         }
@@ -59,7 +60,7 @@ pipeline {
         always {
             // Clean up the workspace and deactivate virtual environment
             sh 'rm -rf $VENV'
-            cleanWs()
+            //cleanWs()
         }
         failure {
             echo 'Build failed!'
